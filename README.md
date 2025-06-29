@@ -264,6 +264,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 ### 🏥 Add Hospital
 
 **POST** `/hospital/create`
+
 **Headers:**
 
 ```json
@@ -282,6 +283,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 ### ➕ Add Specialization
 
 **POST** `/hospital/create`
+
 **Headers:**
 
 ```json
