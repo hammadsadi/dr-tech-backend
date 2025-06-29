@@ -7,6 +7,7 @@ import { AvailabilityController } from '../availability/availability.controllers
 import requestValidation from '../../middlewares/requestValidation';
 import { ServiceValidationSchemas } from '../service/services.validation.schema';
 import { AvailabilityValidationSchema } from '../availability/availability.validation.schema';
+import { AppointmentController } from '../appointment/appointment.controllers';
 
 // Doctor Router
 const doctorRouter = Router();
@@ -47,6 +48,13 @@ doctorRouter.get(
   DoctorControllers.getAllLoggedINDoctor,
 );
 
+// Update Appointment
+doctorRouter.patch(
+  '/appointments/:id',
+  auth(UserRole.Doctor),
+  AppointmentController.updateBooking,
+);
+
 // Update Availability
 doctorRouter.patch(
   '/availability/:id',
@@ -75,7 +83,7 @@ doctorRouter.get('/', DoctorControllers.getAllDoctor);
 
 // Get Doctor Profile
 doctorRouter.get(
-  '/doctors/:id',
+  '/:id',
   auth(UserRole.Doctor, UserRole.Patient, UserRole.Admin),
   DoctorControllers.getDoctorProfile,
 );

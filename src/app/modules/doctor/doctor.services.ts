@@ -210,11 +210,47 @@ const getAllDoctor = async (query: Record<string, unknown>) => {
 };
 
 // Get All Logged In Doctor Appointment
-const getLoggedInDoctorAppointments = async (userId: string) => {
+const getLoggedInDoctorAppointments = async (
+  userId: string,
+  status?: 'pending' | 'accepted' | 'cancelled' | 'completed',
+) => {
   // Get Doctor Information
-  const doctorInfo = await Doctor.findOne({ userId: userId });
-  const allAppointments = await Appointment.find({ doctorId: doctorInfo?._id });
-  return allAppointments;
+  const doctorInfo = await Doctor.findOne({ userId });
+
+  if (!doctorInfo) {
+    throw new AppError(404, 'Doctor not found');
+  }
+
+  // Build filter condition
+  const filter: any = { doctorId: doctorInfo._id };
+  if (status) {
+    filter.status = status;
+  }
+
+  // Fetch appointments based on filter
+  const appointments = await Appointment.find(filter)
+    .populate({
+      path: 'patientId',
+      model: 'User',
+      select: 'name email',
+    })
+    .populate({
+      path: 'serviceId',
+      model: 'Service',
+      select: 'title',
+    })
+    .populate({
+      path: 'doctorId',
+      model: 'Doctor',
+      select: 'phone',
+      populate: {
+        path: 'userId',
+        model: 'User',
+        select: 'name email',
+      },
+    });
+
+  return appointments;
 };
 
 const getDoctorProfile = async (userId: string) => {

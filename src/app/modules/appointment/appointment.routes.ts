@@ -16,12 +16,5 @@ appointmentRouter.post(
   AppointmentController.createBooking,
 );
 
-// Update Appointment
-appointmentRouter.patch(
-  '/:id',
-  auth(UserRole.Doctor),
-  AppointmentController.updateBooking,
-);
-
 // Export Appointment Router
 export const AppointmentRoutes = appointmentRouter;

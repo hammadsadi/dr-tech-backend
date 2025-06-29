@@ -51,7 +51,11 @@ const getAllDoctor = catchAsync(async (req, res) => {
  */
 const getAllLoggedINDoctor = catchAsync(async (req, res) => {
   const { userId } = req.user;
-  const result = await DoctorServices.getLoggedInDoctorAppointments(userId);
+  const { status } = req.query;
+  const result = await DoctorServices.getLoggedInDoctorAppointments(
+    userId,
+    status as 'pending' | 'accepted' | 'cancelled' | 'completed',
+  );
 
   sendResponse(res, {
     statusCode: 200,
@@ -82,5 +86,5 @@ export const DoctorControllers = {
   createDoctor,
   getAllDoctor,
   getAllLoggedINDoctor,
-  getDoctorProfile
-}
+  getDoctorProfile,
+};
