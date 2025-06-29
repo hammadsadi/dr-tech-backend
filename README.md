@@ -159,7 +159,7 @@ yarn build
 ## 📬 API Documentation
 
 Complete Postman collection with examples:
-[Download Postman Collection](#) (Update with actual link)
+[Download Postman Collection](./postman_collection.json) (Update with actual link)
 
 ---
 
@@ -168,7 +168,3 @@ Complete Postman collection with examples:
 **Hammad Sadi**  
 📧 Email: [shahisrail134@gmail.com](mailto:shahisrail134@gmail.com)  
 🔗 GitHub: [@yourusername](https://github.com/yourusername)
-
-```
-
-```
