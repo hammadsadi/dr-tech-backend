@@ -156,12 +156,30 @@ yarn build
 
 ---
 
-## 📬 API Documentation
+## 📬 API Usage Documentation
 
-Complete Postman collection with examples:
 [Download Postman Collection](./postman_collection.json) (Update with actual link)
 
 ---
+
+## 📘 API Usage
+
+### 🔐 Auth Routes
+
+#### ➕ Register Doctor
+
+**POST** `/auth/register-doctor`
+
+```json
+{
+  "name": "Dr. Hammad",
+  "email": "hammad@dr.com",
+  "phone": "01700000000",
+  "password": "123456",
+  "specialization": "68604362312dd12064c022ac", // ObjectId from Specialization collection
+  "hospitalName": "68604380312dd12064c022af" // ObjectId from Hospital collection
+}
+```
 
 ## ✨ Author
 
