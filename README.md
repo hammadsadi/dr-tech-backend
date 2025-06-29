@@ -100,11 +100,12 @@ graph TD
 │   ├── doctor/        # Doctor features
 │   ├── patient/       # Patient features
 │   ├── service/       # Service management
+│   ├── hospital/      # Hospital management
+│   ├── special../     # Specialization management
 │   ├── appointment/   # Appointment logic
 │   └── availability/  # Availability management
 ├── utils/             # Utility functions
 ├── middlewares/       # Custom middlewares
-├── tests/             # Test cases
 ├── config/            # Configuration files
 ├── app.ts             # Main app file
 └── server.ts          # Server entry point
@@ -123,14 +124,14 @@ graph TD
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/doctor-appointment-api.git
-cd doctor-appointment-api
+git clone https://github.com/hammadsadi/dr-tech-backend.git
+cd dr-tech-backend
 ```
 
 ### 2. Install Dependencies
 
 ```bash
-npm install
+yarn install
 ```
 
 ### 3. Configure Environment
@@ -147,17 +148,10 @@ Then update with your credentials.
 
 ```bash
 # Development
-npm run dev
+yarn dev
 
 # Production build
-npm run build
-npm start
-```
-
-### 5. Run Tests
-
-```bash
-npm test
+yarn build
 ```
 
 ---
