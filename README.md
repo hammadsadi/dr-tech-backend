@@ -384,5 +384,5 @@ Authorization: PATIENT_JWT_TOKEN
 ## ✨ Author
 
 **Hammad Sadi**  
-📧 Email: [shahisrail134@gmail.com](mailto:hammad.sadi@yahoo.com)  
+📧 Email: [hammad.sadi@yahoo.com](mailto:hammad.sadi@yahoo.com)  
 🔗 GitHub: [@hammadsadi](https://github.com/hammadsadi)
