@@ -50,7 +50,6 @@ const doctorSaveToDatabase = async (doctorInfo: any) => {
       ],
       { session },
     );
-    console.log('Created User:', createUser);
     // Create Doctor
     await Doctor.create(
       [

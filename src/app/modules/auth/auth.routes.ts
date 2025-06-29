@@ -4,6 +4,7 @@ import { AuthControllers } from './auth.controllers';
 import auth from '../../middlewares/authChecking';
 import { UserRole } from '../user/user.constant';
 import { DoctorControllers } from '../doctor/doctor.controllers';
+import { DoctorValidation } from '../doctor/doctor.validation.schema';
 
 // User Router
 const authRouter = Router();
@@ -18,7 +19,7 @@ authRouter.post(
 // Create Doctor
 authRouter.post(
   '/register-doctor',
-
+  requestValidation(DoctorValidation.createDoctorValidationSchema),
   DoctorControllers.createDoctor,
 );
 
