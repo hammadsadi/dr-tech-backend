@@ -86,17 +86,16 @@ const doctorSaveToDatabase = async (doctorInfo: any) => {
 
 // Get All Doctor
 const getAllDoctor = async (query: Record<string, unknown>) => {
-  console.log('Query:', query);
   const matchStage: any = {};
   const excludeFields = ['sort', 'limit', 'page', 'fields'];
 
-  // ✅ নেস্টেড ফিল্ড হ্যান্ডলিং
+  // Exclude fields from query
   for (const key in query) {
     if (excludeFields.includes(key)) continue;
 
     const value = query[key];
     if (key.includes('.')) {
-      // নেস্টেড ফিল্ড (যেমন: hospital.name, specialization.name)
+      // Nested field
       const [field, subField] = key.split('.');
       if (field === 'hospitalName') {
         matchStage[`hospital.${subField}`] = value;
@@ -106,17 +105,16 @@ const getAllDoctor = async (query: Record<string, unknown>) => {
         matchStage[`user.${subField}`] = value;
       }
     } else {
-      // সরাসরি ফিল্ড (যেমন: phone)
       matchStage[key] = value;
     }
   }
 
-  // ✅ পেজিনেশন
+  // Pagination
   const page = Number(query.page) || 1;
   const limit = Number(query.limit) || 10;
   const skip = (page - 1) * limit;
 
-  // ✅ প্রধান অ্যাগ্রিগেশন পাইপলাইন
+  // Sort
   const result = await Doctor.aggregate([
     {
       $lookup: {
@@ -165,7 +163,7 @@ const getAllDoctor = async (query: Record<string, unknown>) => {
     { $limit: limit },
   ]);
 
-  // ✅ মোট গণনা
+  // Total
   const total = await Doctor.aggregate([
     {
       $lookup: {

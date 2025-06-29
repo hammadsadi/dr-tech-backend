@@ -7,6 +7,7 @@ import { Patient } from './patient.model';
 import { IPatientInfo } from './patient.type';
 import { Appointment } from '../appointment/appointment.model';
 
+// Create Patient
 const patientSaveToDatabase = async (patientInfo: IPatientInfo) => {
   const { phone, age, gender, name, email, password } = patientInfo;
 
@@ -61,10 +62,10 @@ const patientSaveToDatabase = async (patientInfo: IPatientInfo) => {
     await session.commitTransaction();
     session.endSession();
     return { accessToken: token };
-  } catch {
+  } catch (error: any) {
     await session.abortTransaction();
     session.endSession();
-    throw new AppError(400, 'Failed to create patient!');
+    throw new AppError(400, error?.message || 'Failed to create patient!');
   }
 };
 

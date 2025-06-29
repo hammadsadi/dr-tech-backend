@@ -6,9 +6,6 @@ import { PatientControllers } from './patient.controllers';
 
 const patientRouter = Router();
 
-// Public routes
-patientRouter.post('/register-patient', PatientControllers.createPatient);
-
 // Protected routes
 patientRouter.get(
   '/profile',
