@@ -342,8 +342,9 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 
 Optional Filters:
 
-- `?hospitalName.name=City Hospital`
-- `?specialization.name=Cardiology`
+- `?hospital=City Hospital`
+- `?specialization=Cardiology`
+- `?doctor=dr sadi`
 
 #### 👀 View Doctor Profile
 

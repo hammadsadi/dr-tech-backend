@@ -85,27 +85,32 @@ const doctorSaveToDatabase = async (doctorInfo: any) => {
 };
 
 // Get All Doctor
-const getAllDoctor = async (query: Record<string, unknown>) => {
+const getAllDoctor = async (query: Record<string, any>) => {
   const matchStage: any = {};
   const excludeFields = ['sort', 'limit', 'page', 'fields'];
 
-  // Exclude fields from query
+  //   query keys to nested fields
   for (const key in query) {
     if (excludeFields.includes(key)) continue;
 
     const value = query[key];
-    if (key.includes('.')) {
-      // Nested field
-      const [field, subField] = key.split('.');
-      if (field === 'hospitalName') {
-        matchStage[`hospital.${subField}`] = value;
-      } else if (field === 'specialization') {
-        matchStage[`specialization.${subField}`] = value;
-      } else if (field === 'user') {
-        matchStage[`user.${subField}`] = value;
-      }
-    } else {
-      matchStage[key] = value;
+
+    switch (key) {
+      case 'hospital':
+        matchStage['hospital.name'] = value;
+        break;
+      case 'specialization':
+        matchStage['specialization.name'] = value;
+        break;
+      case 'doctor':
+        matchStage['user.name'] = value;
+        break;
+      default:
+        if (key.includes('.')) {
+          matchStage[key] = value;
+        } else {
+          matchStage[key] = value;
+        }
     }
   }
 
@@ -114,7 +119,7 @@ const getAllDoctor = async (query: Record<string, unknown>) => {
   const limit = Number(query.limit) || 10;
   const skip = (page - 1) * limit;
 
-  // Sort
+  // Aggregate query with lookups
   const result = await Doctor.aggregate([
     {
       $lookup: {
@@ -143,7 +148,11 @@ const getAllDoctor = async (query: Record<string, unknown>) => {
       },
     },
     { $unwind: '$hospital' },
+
+    // Filter
     { $match: matchStage },
+
+    //  Fields to return
     {
       $project: {
         _id: 1,
@@ -159,11 +168,13 @@ const getAllDoctor = async (query: Record<string, unknown>) => {
         'hospital.floor': 1,
       },
     },
+
+    // Pagination
     { $skip: skip },
     { $limit: limit },
   ]);
 
-  // Total
+  // Total count for meta
   const total = await Doctor.aggregate([
     {
       $lookup: {
