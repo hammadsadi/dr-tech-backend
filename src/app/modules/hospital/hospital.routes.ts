@@ -3,6 +3,7 @@ import auth from '../../middlewares/authChecking';
 import { HospitalControllers } from './hospital.controllers';
 import requestValidation from '../../middlewares/requestValidation';
 import { HospitalValidation } from './hospital.validation.schema';
+import { UserRole } from '../user/user.constant';
 
 // Hospital Router
 const hospitalRouter = Router();
@@ -10,6 +11,7 @@ const hospitalRouter = Router();
 // Create Hospital
 hospitalRouter.post(
   '/create',
+  auth(UserRole.Doctor, UserRole.Admin),
   requestValidation(HospitalValidation.createHospitalZodSchema),
   HospitalControllers.createHospital,
 );

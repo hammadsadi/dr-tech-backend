@@ -261,9 +261,48 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 }
 ```
 
+### 🏥 Add Hospital
+
+**POST** `/hospital/create`
+**Headers:**
+
+```json
+ Authorization: DOCTOR_JWT_TOKEN
+```
+
+**Body:** `Example Request Body`
+
+```json
+{
+  "name": "City Hospital",
+  "floor": "6"
+}
+```
+
+### ➕ Add Specialization
+
+**POST** `/hospital/create`
+**Headers:**
+
+```json
+ Authorization: DOCTOR_JWT_TOKEN
+```
+
+**Body:** `Example Request Body`
+
+```json
+{ "name": "Gastroenterology" }
+```
+
 #### 📅 Set Availability
 
 **POST** `/doctor/availability`
+
+**Headers:**
+
+```json
+ Authorization: DOCTOR_JWT_TOKEN
+```
 
 **Body** `Example Request Body`
 
