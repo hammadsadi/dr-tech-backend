@@ -169,6 +169,7 @@ yarn build
 #### ➕ Register Doctor
 
 **POST** `/auth/register-doctor`
+`Example Request Body`
 
 ```json
 {
@@ -180,6 +181,141 @@ yarn build
   "hospitalName": "68604380312dd12064c022af" // ObjectId from Hospital collection
 }
 ```
+
+Returns: `{ "token": "JWT_TOKEN_HERE" }`
+
+#### ➕ Register Patient
+
+**POST** `/auth/register-patient`
+`Example Request Body`
+
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "01800000000",
+  "password": "123456",
+  "age": 30,
+  "gender": "Male"
+}
+```
+
+Returns: `{ "token": "JWT_TOKEN_HERE" }`
+
+#### 🔑 Login
+
+**POST** `/auth/login`
+`Example Request Body`
+
+```json
+{
+  "email": "john@example.com",
+  "password": "123456"
+}
+```
+
+Returns: `{ "token": "JWT_TOKEN_HERE" }`
+
+---
+
+### 🩺 Doctor Routes
+
+#### ➕ Add Service
+
+**POST** `/doctor/services`
+
+**Headers:**
+
+```json
+Authorization: DOCTOR_JWT_TOKEN
+```
+
+**Body:** `Example Request Body`
+
+```json
+{
+  "title": "Heart Checkup",
+  "description": "Basic heart checkup",
+  "price": 800,
+  "duration": 30
+}
+```
+
+#### 📅 Set Availability
+
+**POST** `/doctor/availability`
+`Example Request Body`
+
+```json
+{
+  "service": "SERVICE_ID", // ObjectId from Service collection
+  "day": "Monday",
+  "slots": ["10:00 AM", "11:00 AM", "2:00 PM"]
+}
+```
+
+#### 🗂 View Appointments by Status
+
+**GET** `/doctor/appointments?status=pending`
+
+#### ✅ Update Appointment Status
+
+**PATCH** `/doctor/appointments/:id/status`
+`Example Request Body`
+
+```json
+{
+  "status": "accepted"
+}
+```
+
+---
+
+### 👤 Patient Routes
+
+#### 📋 View All Doctors
+
+**GET** `/doctor`
+
+Optional Filters:
+
+- `?hospitalName.name=City Hospital`
+- `?specialization.name=Cardiology`
+
+#### 👀 View Doctor Profile
+
+**GET** `/doctor/:id`
+
+#### 📆 Book Appointment
+
+**POST** `/appointments`
+**Headers:**
+
+```json
+Authorization: PATIENT_JWT_TOKEN
+```
+
+`Example Request Body`
+
+```json
+{
+  "doctorId": "DOCTOR_ID", // Doctor ObjectId
+  "serviceId": "SERVICE_ID", // Service ObjectId
+  "selectedDate": "2025-06-30",
+  "timeSlot": "10:00 AM"
+}
+```
+
+#### 🧾 View My Appointments
+
+**GET** `/patient/appointment`
+**Headers:**
+
+```json
+Authorization: PATIENT_JWT_TOKEN
+```
+
+---
 
 ## ✨ Author
 
