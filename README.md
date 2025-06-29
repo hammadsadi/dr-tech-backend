@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 🩺 Doctor–Patient Appointment Management System API
 
@@ -79,7 +77,6 @@ A RESTful API for managing doctor–patient appointments using **Node.js**, **Ex
 ---
 
 ## 🗂️ Appointment Workflow
-
 ```
 
 Patient books appointment → Status = Pending
@@ -115,7 +112,7 @@ Patient receives email notification with updated status
 ├── app.ts
 └── server.ts
 
-```
+````
 
 ---
 
@@ -140,7 +137,7 @@ A complete Postman collection with authentication and all endpoints:
 ```bash
 git clone https://github.com/yourusername/doctor-appointment-api.git
 cd doctor-appointment-api
-```
+````
 
 ### 2. Install Dependencies
 
