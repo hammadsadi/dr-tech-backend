@@ -169,7 +169,7 @@ yarn build
 #### ➕ Register Doctor
 
 **POST** `/auth/register-doctor`
-Data `Example Request Body`
+**Data** `Example Request Body`
 
 ```json
 {
@@ -187,7 +187,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 #### ➕ Register Patient
 
 **POST** `/auth/register-patient`
-`Example Request Body`
+**Body** `Example Request Body`
 
 ```json
 {
@@ -205,7 +205,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 #### 🔑 Login
 
 **POST** `/auth/login`
-`Example Request Body`
+**Body** `Example Request Body`
 
 ```json
 {
@@ -244,7 +244,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 #### 📅 Set Availability
 
 **POST** `/doctor/availability`
-`Example Request Body`
+**Body** `Example Request Body`
 
 ```json
 {
@@ -261,7 +261,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 #### ✅ Update Appointment Status
 
 **PATCH** `/doctor/appointments/:id/status`
-`Example Request Body`
+**Body** `Example Request Body`
 
 ```json
 {
@@ -295,7 +295,7 @@ Optional Filters:
 Authorization: PATIENT_JWT_TOKEN
 ```
 
-`Example Request Body`
+**Body** `Example Request Body`
 
 ```json
 {
