@@ -158,7 +158,13 @@ yarn build
 
 ## 📬 API Usage Documentation
 
-[Download Postman Collection](./postman_collection.json) (Update with actual link)
+### 📬 Postman Collection
+
+You can test all API endpoints using the Postman Collection below:
+
+👉 [Click here to view the Postman Collection](https://www.postman.com/nextgen-webpulse-9434/workspace/task-space/collection/36346928-8d885ddc-53e0-44c6-84df-7c20cca8306b?action=share&creator=36346928)
+
+You can also import the collection into Postman directly using this link.
 
 ---
 
@@ -168,10 +174,12 @@ yarn build
 
 Use the following base URLs to test or integrate the API:
 
-| Environment     | Base URL                                                                   |
-| --------------- | -------------------------------------------------------------------------- |
-| 🟢 Live Server  | [`https://dr-tech-api.vercel.app/api`](https://dr-tech-api.vercel.app/api) |
-| 🧪 Local Server | `http://localhost:5000/`                                                   |
+| Environment     | Base URL                                                               |
+| --------------- | ---------------------------------------------------------------------- |
+| 🟢 Live Server  | [`https://dr-tech-api.vercel.app/api`](https://dr-tech-api.vercel.app) |
+| 🧪 Local Server | `http://localhost:5000`                                                |
+
+---
 
 ### 🔐 Auth Routes
 
@@ -334,5 +342,5 @@ Authorization: PATIENT_JWT_TOKEN
 ## ✨ Author
 
 **Hammad Sadi**  
-📧 Email: [shahisrail134@gmail.com](mailto:shahisrail134@gmail.com)  
-🔗 GitHub: [@yourusername](https://github.com/yourusername)
+📧 Email: [shahisrail134@gmail.com](mailto:hammad.sadi@yahoo.com)  
+🔗 GitHub: [@hammadsadi](https://github.com/hammadsadi)
