@@ -1,14 +1,16 @@
 import { Router } from 'express';
 import auth from '../../middlewares/authChecking';
 import { HospitalControllers } from './hospital.controllers';
+import requestValidation from '../../middlewares/requestValidation';
+import { HospitalValidation } from './hospital.validation.schema';
 
-// User Router
+// Hospital Router
 const hospitalRouter = Router();
 
-// Create User
+// Create Hospital
 hospitalRouter.post(
   '/create',
-
+  requestValidation(HospitalValidation.createHospitalZodSchema),
   HospitalControllers.createHospital,
 );
 
