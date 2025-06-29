@@ -117,7 +117,7 @@ graph TD
 
 ### Prerequisites
 
-- Node.js (v16+)
+- Node.js (v20+)
 - MongoDB (v4.4+)
 - TypeScript (v4.7+)
 
@@ -169,7 +169,7 @@ yarn build
 #### ➕ Register Doctor
 
 **POST** `/auth/register-doctor`
-`Example Request Body`
+Data `Example Request Body`
 
 ```json
 {
@@ -227,7 +227,7 @@ Returns: `{ "token": "JWT_TOKEN_HERE" }`
 **Headers:**
 
 ```json
-Authorization: DOCTOR_JWT_TOKEN
+ Authorization: DOCTOR_JWT_TOKEN
 ```
 
 **Body:** `Example Request Body`
