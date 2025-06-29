@@ -6,6 +6,7 @@ import { ServiceControllers } from '../service/service.controllers';
 import { AvailabilityController } from '../availability/availability.controllers';
 import requestValidation from '../../middlewares/requestValidation';
 import { ServiceValidationSchemas } from '../service/services.validation.schema';
+import { AvailabilityValidationSchema } from '../availability/availability.validation.schema';
 
 // Doctor Router
 const doctorRouter = Router();
@@ -22,6 +23,7 @@ doctorRouter.post(
 doctorRouter.post(
   '/availability',
   auth(UserRole.Doctor),
+  requestValidation(AvailabilityValidationSchema.createAvailabilitySchema),
   AvailabilityController.createAvailability,
 );
 
@@ -49,6 +51,7 @@ doctorRouter.get(
 doctorRouter.patch(
   '/availability/:id',
   auth(UserRole.Doctor),
+  requestValidation(AvailabilityValidationSchema.updateAvailabilitySchema),
   AvailabilityController.updateAvailability,
 );
 
