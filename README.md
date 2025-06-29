@@ -164,6 +164,15 @@ yarn build
 
 ## 📘 API Usage
 
+## 🔗 API Usage URLs
+
+Use the following base URLs to test or integrate the API:
+
+| Environment     | Base URL                                                                   |
+| --------------- | -------------------------------------------------------------------------- |
+| 🟢 Live Server  | [`https://dr-tech-api.vercel.app/api`](https://dr-tech-api.vercel.app/api) |
+| 🧪 Local Server | `http://localhost:5000/`                                                   |
+
 ### 🔐 Auth Routes
 
 #### ➕ Register Doctor
