@@ -98,9 +98,6 @@ Patient receives email notification with updated status
 
 /src
 ├── app/
-├── config/
-├── middlewares/
-├── utils/
 ├── modules/
 │ ├── auth/
 │ ├── user/
@@ -109,6 +106,9 @@ Patient receives email notification with updated status
 │ ├── service/
 │ ├── appointment/
 │ └── availability/
+├── utils/
+├── middlewares/
+├── config/
 ├── app.ts
 └── server.ts
 
@@ -126,7 +126,7 @@ Patient receives email notification with updated status
 ## 📬 Postman Collection
 
 A complete Postman collection with authentication and all endpoints:
-👉 [Download Postman Collection](#) <!-- Replace with actual link -->
+👉 [Download Postman Collection](#) <!-- replace with actual link -->
 
 ---
 
@@ -147,7 +147,7 @@ npm install
 
 ### 3. Environment Variables
 
-Create a `.env` file in the root directory and add:
+Create a `.env` file and configure:
 
 ```
 PORT=5000
@@ -197,8 +197,5 @@ Developed by **Hammad Sadi**
 ---
 
 ```
-
----
-
 
 ```
