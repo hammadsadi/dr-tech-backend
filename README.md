@@ -158,7 +158,7 @@ yarn build
 
 ## 📬 API Usage Documentation
 
-### 📬 Postman Collection
+### 📂 Postman Collection
 
 You can test all API endpoints using the Postman Collection below:
 
@@ -174,10 +174,10 @@ You can also import the collection into Postman directly using this link.
 
 Use the following base URLs to test or integrate the API:
 
-| Environment     | Base URL                                                               |
-| --------------- | ---------------------------------------------------------------------- |
-| 🟢 Live Server  | [`https://dr-tech-api.vercel.app/api`](https://dr-tech-api.vercel.app) |
-| 🧪 Local Server | `http://localhost:5000`                                                |
+| Environment     | Base URL                                                           |
+| --------------- | ------------------------------------------------------------------ |
+| 🟢 Live Server  | [`https://dr-tech-api.vercel.app`](https://dr-tech-api.vercel.app) |
+| 🧪 Local Server | `http://localhost:5000`                                            |
 
 ---
 
