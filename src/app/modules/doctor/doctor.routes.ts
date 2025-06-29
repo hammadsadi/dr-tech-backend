@@ -4,6 +4,8 @@ import { DoctorControllers } from './doctor.controllers';
 import { UserRole } from '../user/user.constant';
 import { ServiceControllers } from '../service/service.controllers';
 import { AvailabilityController } from '../availability/availability.controllers';
+import requestValidation from '../../middlewares/requestValidation';
+import { ServiceValidationSchemas } from '../service/services.validation.schema';
 
 // Doctor Router
 const doctorRouter = Router();
@@ -11,6 +13,7 @@ const doctorRouter = Router();
 // Create Services
 doctorRouter.post(
   '/services',
+  requestValidation(ServiceValidationSchemas.createServiceValidationSchema),
   auth(UserRole.Doctor),
   ServiceControllers.createService,
 );
@@ -52,8 +55,16 @@ doctorRouter.patch(
 // Update Services
 doctorRouter.patch(
   '/services/:id',
+  requestValidation(ServiceValidationSchemas.updateServiceValidationSchema),
   auth(UserRole.Doctor),
   ServiceControllers.updateService,
+);
+
+// Delete Services
+doctorRouter.delete(
+  '/services/:id',
+  auth(UserRole.Doctor),
+  ServiceControllers.deleteService,
 );
 
 // Get All Doctor
@@ -62,7 +73,7 @@ doctorRouter.get('/', DoctorControllers.getAllDoctor);
 // Get Doctor Profile
 doctorRouter.get(
   '/doctors/:id',
-  auth(UserRole.Doctor,UserRole.Patient, UserRole.Admin),
+  auth(UserRole.Doctor, UserRole.Patient, UserRole.Admin),
   DoctorControllers.getDoctorProfile,
 );
 // Export Doctor Router

@@ -54,8 +54,27 @@ const updateService = catchAsync(async (req, res) => {
   });
 });
 
+/**
+ * @description Delete Service Controllers
+ * @param ''
+ * @returns Data
+ */
+const deleteService = catchAsync(async (req, res) => {
+  const { userId } = req.user;
+  const { id } = req.params;
+  const result = await Services.deleteService(id, userId);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Service Deleted Successful',
+    data: result,
+  });
+});
+
 export const ServiceControllers = {
   createService,
   updateService,
   getAllService,
+  deleteService,
 };
